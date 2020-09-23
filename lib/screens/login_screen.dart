@@ -54,6 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.grey[850],
       body: StreamBuilder<LoginState>(
         stream: _loginBloc.outState,
+        initialData: LoginState.LOADING,
         builder: (context, snapshot) {
           switch(snapshot.data){
             case LoginState.LOADING:
@@ -61,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: CircularProgressIndicator(
                   valueColor:AlwaysStoppedAnimation(Colors.pinkAccent) ,) ,);
             case LoginState.FAIL:
-            case LoginState.FAIL:
+            case LoginState.SUCCESS:
             case LoginState.IDLE:
             return Stack(
               alignment: AlignmentDirectional.center,
